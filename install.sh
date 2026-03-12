@@ -1,8 +1,8 @@
 #!/bin/bash
 # ============================================================
-# 🏰 HEART CASTLE — AMD RX580 Ollama Kurulum Scripti
-# Ubuntu 22.04 | ROCm + Ollama + Modeller
-# Tek komutla çalıştır: bash install.sh
+# 🏰 OLLAMA-AMD-SETUP — AMD RX580 Ollama Installation Script
+# Ubuntu 22.04 | ROCm + Ollama + Models
+# Run with: bash install.sh
 # ============================================================
 
 set -e
@@ -20,7 +20,7 @@ echo "  ███████║█████╗  ███████║█�
 echo "  ██╔══██║██╔══╝  ██╔══██║██╔══██╗   ██║   "
 echo "  ██║  ██║███████╗██║  ██║██║  ██║   ██║   "
 echo "  ╚═╝  ╚═╝╚══════╝╚═╝  ╚═╝╚═╝  ╚═╝   ╚═╝  "
-echo "  🏰 CASTLE — AMD RX580 + Ollama Kurulumu"
+echo "  🚀 OLLAMA-AMD-SETUP — One-Click AMD GPU Setup"
 echo -e "${NC}"
 
 # ── 1. Sistem güncellemesi ve Ön Kontroller ───────────────────
@@ -140,7 +140,7 @@ fi
 # ── Özet ──────────────────────────────────────────────────
 echo ""
 echo -e "${GREEN}════════════════════════════════════════${NC}"
-echo -e "${GREEN}  🏰 Heart Castle kurulumu tamamlandı!  ${NC}"
+echo -e "${GREEN}    Ollama-AMD-Setup is Complete!      ${NC}"
 echo -e "${GREEN}════════════════════════════════════════${NC}"
 echo ""
 echo -e "Ollama API: ${BLUE}http://$(hostname -I | awk '{print $1}'):11434${NC}"

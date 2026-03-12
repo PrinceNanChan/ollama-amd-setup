@@ -1,20 +1,20 @@
-# 🏰 Heart Castle — AMD Radeon RX 580 + Ollama Kurulum Rehberi (ROCm)
+# 🏰 Ollama-AMD-Setup — AMD Radeon RX 580 + Ollama (ROCm)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 ![GPU: AMD RX 580](https://img.shields.io/badge/GPU-AMD_RX_580-orange.svg)
 ![OS: Ubuntu 22.04](https://img.shields.io/badge/OS-Ubuntu_22.04-blue.svg)
 
-**Heart Castle**, eski nesil AMD ekran kartlarında (özellikle RX 580/570 8GB/4GB) Ollama ve ROCm kurulumunu çocuk oyuncağı haline getiren bir otomasyon sistemidir.
+**Ollama-AMD-Setup** is a one-click automation script to get Ollama and ROCm running perfectly on older AMD GPUs (specifically RX 580/570 8GB/4GB).
 
 > **How to run local LLMs (DeepSeek, Llama 3, Qwen) on AMD RX 580?**
 > This project provides the definitive answer and a one-click install script for Ubuntu 22.04.
 
-## Hızlı Kurulum (Önerilen)
+## Quick Install (Recommended)
 
 ```bash
-# 1. Bu repoyu klonla
-git clone https://github.com/Prens-Nan-Chan/heart-castle-setup.git
-cd heart-castle-setup
+# 1. Clone this repo
+git clone https://github.com/Prens-Nan-Chan/ollama-amd-setup.git
+cd ollama-amd-setup
 
 # 2. Script'e izin ver
 chmod +x install.sh
@@ -53,33 +53,18 @@ rocm-smi
 ollama run qwen2.5:3b "Merhaba, çalışıyor musun?"
 ```
 
-## Xeon'dan Erişim
-
-Heart Castle'ın Tailscale IP'sini bulduktan sonra:
-
-```bash
-# Tailscale IP'yi öğren (Heart Castle'da çalıştır)
-tailscale ip
-
-# Xeon'dan test et
-curl http://HEART_CASTLE_TAILSCALE_IP:11434/api/tags
+# From Xeon (or any network device):
+curl http://AMD_HOST_TAILSCALE_IP:11434/api/tags
 ```
 
-## OpenClaw Entegrasyonu
+## OpenClaw / WebUI Integration
 
-Xeon'daki openclaw config'ine ekle:
+Add this to your config:
 ```json
 {
-  "agents": {
-    "defaults": {
-      "model": {
-        "primary": "ollama/deepseek-r1:7b"
-      }
-    }
-  },
   "providers": {
     "ollama": {
-      "baseUrl": "http://HEART_CASTLE_TAILSCALE_IP:11434"
+      "baseUrl": "http://AMD_HOST_TAILSCALE_IP:11434"
     }
   }
 }

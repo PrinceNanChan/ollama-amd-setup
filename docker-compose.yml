@@ -1,12 +1,12 @@
 # ============================================================
-# 🏰 HEART CASTLE — Docker Compose (Alternatif Kurulum)
+# 🏰 OLLAMA-AMD-SETUP — Docker Compose
 # Kullanım: docker compose up -d
 # ============================================================
 
 services:
   ollama:
     image: ollama/ollama:rocm
-    container_name: heart-castle-ollama
+    container_name: ollama-amd-service
     restart: unless-stopped
     devices:
       - /dev/kfd:/dev/kfd
@@ -31,7 +31,7 @@ services:
   # Model çekici - ilk kurulumda modelleri otomatik indirir
   ollama-init:
     image: ollama/ollama:rocm
-    container_name: heart-castle-init
+    container_name: ollama-amd-init
     depends_on:
       ollama:
         condition: service_healthy
