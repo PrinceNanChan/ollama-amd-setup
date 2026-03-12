@@ -16,41 +16,41 @@
 git clone https://github.com/PrinceNanChan/ollama-amd-setup.git
 cd ollama-amd-setup
 
-# 2. Script'e izin ver
+# 2. Give permissions to script
 chmod +x install.sh
 
-# 3. Tek komutla kur
+# 3. Install with one command
 bash install.sh
 
-# 4. Sistemi yeniden başlat (ROCm için zorunlu)
+# 4. Reboot your system (Required for ROCm)
 sudo reboot
 ```
 
-## Alternatif: Docker ile Kurulum
+## Alternative: Installation with Docker
 
 ```bash
-# Docker kurulu değilse önce kur
+# Install Docker if not already installed
 curl -fsSL https://get.docker.com | sh
 sudo usermod -aG docker $USER
 
-# Compose ile başlat
+# Start with Compose
 docker compose up -d
 
-# Logları izle
+# Watch logs
 docker compose logs -f
 ```
 
-## Kurulum Sonrası Test
+## Post-Installation Test
 
 ```bash
-# Lokal test
+# Local test
 curl http://localhost:11434/api/tags
 
-# GPU kullanımını kontrol et
+# Check GPU usage
 rocm-smi
 
-# Model test (hızlı)
-ollama run qwen2.5:3b "Merhaba, çalışıyor musun?"
+# Quick model test
+ollama run qwen2.5:3b "Hello, are you working?"
 ```
 
 # From Xeon (or any network device):
@@ -70,39 +70,39 @@ Add this to your config:
 }
 ```
 
-## Kurulu Modeller
+## Installed Models
 
-| Model | VRAM | Hız (RX580) | Kullanım |
-|-------|------|-------------|----------|
-| DeepSeek R1 7B | ~6GB | ~24 tok/s | Reasoning, kod |
-| Qwen2.5 7B | ~6GB | ~24 tok/s | Genel amaç |
-| Qwen2.5 3B | ~3GB | ~71 tok/s | Hızlı görevler |
-| Llama 3.2 3B | ~3GB | ~70 tok/s | Hızlı görevler |
+| Model | VRAM | Speed (RX580) | Usage |
+|-------|------|---------------|-------|
+| DeepSeek R1 7B | ~6GB | ~24 tok/s | Reasoning, Coding |
+| Qwen2.5 7B | ~6GB | ~24 tok/s | General Purpose |
+| Qwen2.5 3B | ~3GB | ~71 tok/s | Fast Tasks |
+| Llama 3.2 3B | ~3GB | ~70 tok/s | Fast Tasks |
 
-## Sorun Giderme
+## Troubleshooting
 
-**GPU görünmüyorsa:**
+**If GPU is not visible:**
 ```bash
 rocminfo | grep "Agent"
-# HSA_OVERRIDE_GFX_VERSION=10.3.0 gerekli RX580 için
+# HSA_OVERRIDE_GFX_VERSION=10.3.0 is required for RX580
 ```
 
-**Ollama başlamıyorsa:**
+**If Ollama doesn't start:**
 ```bash
 sudo systemctl status ollama
 sudo journalctl -u ollama -n 50
 ```
 
-**Yeniden başlatmak için:**
+**To restart:**
 ```bash
 sudo systemctl restart ollama
 ```
 
 ---
 
-## 📄 Lisans
+## 📄 License
 
-Bu proje **MIT Lisansı** ile lisanslanmıştır. Detaylar için [LICENSE](LICENSE) dosyasına bakabilirsiniz.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
 
 ---
 
