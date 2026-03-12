@@ -13,7 +13,7 @@
 
 ```bash
 # 1. Clone this repo
-git clone https://github.com/Prens-Nan-Chan/ollama-amd-setup.git
+git clone https://github.com/PrinceNanChan/ollama-amd-setup.git
 cd ollama-amd-setup
 
 # 2. Script'e izin ver
