@@ -1,0 +1,23 @@
+services:
+  qwen35-rx580:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: qwen35-rx580
+    restart: unless-stopped
+    environment:
+      MODEL_PATH: ${MODEL_PATH:-/models/Qwen3.5-2B-q4_k_m.gguf}
+      HOST: 0.0.0.0
+      PORT: ${PORT:-11440}
+      CTX: ${CTX:-2048}
+      NGL: ${NGL:-99}
+      FLASH_ATTN: ${FLASH_ATTN:-off}
+    ports:
+      - "${PORT:-11440}:11440"
+    devices:
+      - /dev/dri:/dev/dri
+    group_add:
+      - "video"
+      - "render"
+    volumes:
+      - ${MODEL_DIR:-/mnt/data/melikshah-hf/gguf}:/models:ro
